@@ -1,0 +1,177 @@
+/* BASE ELEMENTS */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font: 1em/1.5 'Open Sans', sans-serif;
+	color: #373737;
+	background: #eaeaea;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1,
+h3 {
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 1.3em;
+	line-height: 1.25em;
+	margin-top: .85em;
+	margin-bottom: .5em;
+}
+
+p {
+	font-size: .875em;
+	line-height: 1.4;
+	margin: 0 0 1.5em;
+}
+
+/* CLASSES */
+
+/*********************************************************
+                 NOTE:
+display: flex may be creating some awkward looking cubes
+when changing perspective to the main .cube container. I had
+to put the perspective in the .content main container to have a
+better looking visual effect. Next time you may not want to use
+display: flex to align your .cube containers and instead use floats
+and margins.
+
+*********************************************************/
+
+.container,
+.content {
+	margin: auto;
+}
+
+.container {
+	max-width: 1260px;
+	width: 100%;
+	padding: 0 2.25em 4em;
+	background: #fff;
+}
+
+.main-header {
+	text-align: center;
+	padding: 2.8em 0 3.8em;
+}
+
+.name {
+	font-size: 1.65em;
+	font-weight: 800;
+	margin: 0 0 1.5em;
+	line-height: 1;
+}
+
+.name span {
+	font-weight: 300;
+	margin-left: -7px;
+}
+
+/* DICE */
+
+.content {
+	display: flex;
+	justify-content: space-around;
+	perspective: 800px;
+}
+
+.cube-container {
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 2s ease-in-out;
+}
+
+.cube {
+	width: 200px;
+	height: 200px;
+	display: block;
+}
+
+.dice {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: absolute;
+	background: #345d88;
+	border: #373737 solid 5px;
+}
+
+.number,
+.word {
+	margin: auto;
+	font-weight: bold;
+	font-size: 4em;
+}
+
+.one {
+	transform: translate3d(0, 0, 100px);
+}
+
+/*
+.two {
+	transform-origin: left center;
+	transform: rotate3d(0, 1, 0, 270deg) translate3d(-100px, 0, 0);
+}
+*/
+.two {
+	transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, 100px);
+}
+/*
+.three {
+	transform-origin: top center;
+	transform: rotate3d(1, 0, 0, -270deg) translate3d(0, -100px, 0);
+}
+*/
+
+.three {
+	transform: rotate3d(1, 0, 0, 90deg) translate3d(0, 0, 100px);
+}
+
+.four {
+	transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0, 100px);
+}
+
+/*
+.five {
+	transform-origin: right center;
+	transform: rotate3d(0, 1, 0, -270deg) translate3d(100px, 0, 0);
+}
+*/
+
+.five {
+	transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 0, 100px);
+}
+
+.six {
+	transform: translate3d(0, 0, -100px) rotate3d(0, 1, 0, 180deg);
+	transition-property: background color;
+	transition-duration: 1s;
+	transition-timing-function: ease-in ease-out;
+	transition-delay: 1.2s;
+}
+
+
+.animate1:hover  {
+	transform: rotatey(540deg);
+}
+
+.cube:hover .six {
+	background: DarkOrchid;
+	color: white;
+}
+
+.animate2:hover {
+	transform: rotate3d(1, 1, 0, 180deg) rotatez(630deg);
+}
+
+.animate3:hover {
+	transform: rotatey(-540deg) rotatex(370deg);
+}
